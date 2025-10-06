@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model translations {
+  id                   Int      @id @default(autoincrement())
+  source_lang          String
+  target_lang          String
+  source_text          String
+  translated_text      String?
+  detected_source_lang String?
+  status               String   @default("PENDING")
+  error_message        String?
+  provider             String   @default("gemini")
+  model                String   @default("gemini-1.5-flash")
+  created_at           DateTime @default(now())
+  updated_at           DateTime @updatedAt
+
+  @@unique([source_lang, target_lang, source_text])
+}
