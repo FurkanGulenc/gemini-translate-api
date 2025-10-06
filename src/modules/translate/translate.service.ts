@@ -4,7 +4,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-  import { PrismaService } from '../../prisma/prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 import { GeminiService } from '../gemini/gemini.service';
 import { TranslateDto } from './dto/translate.dto';
 import { Lang } from './dto/lang.enum';
